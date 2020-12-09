@@ -1,0 +1,26 @@
+body{
+    background: #ffffff;
+}
+
+.main-content{
+    background: #e8eaed;
+    min-height: 100vh;
+}
+
+.nav-link{
+    color: #000000;
+    opacity: 0.6;
+    padding: 1em 0;
+}
+
+
+.nav-link:hover{
+    color: #000000;
+    opacity: 1;
+}
+
+.nav-link.active{
+    color: #000000;
+    opacity: 1;
+    font-weight: bold;
+}

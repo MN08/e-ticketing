@@ -14,8 +14,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $active ='';
-        return view('home');
+        $active ='Dashboard';
+
+        return view('home',['active' => $active]);
     }
 
     /**

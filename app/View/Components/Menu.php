@@ -26,8 +26,30 @@ class Menu extends Component
      */
     public function render()
     {
-        $data = ['Dashboar','Home'];
+        return view('components.menu',['active'=>$this->active]);
+    }
 
-        return view('components.menu',['list'=>$data]);
+    public function listMenu(){
+        return [
+            [
+                'label' => 'Dashboard'
+            ],
+            [
+                'label' => 'Movies'
+            ],
+            [
+                'label' => 'Theaters'
+            ],
+            [
+                'label' => 'Tickets'
+            ],
+            [
+                'label' => 'Users'
+            ],
+        ];
+    }
+
+    public function isActive($label){
+        return $label === $this->active;
     }
 }
