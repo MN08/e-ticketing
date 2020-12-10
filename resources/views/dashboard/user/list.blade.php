@@ -41,11 +41,11 @@
                         <td>{{ $user['email'] }}</td>
                         <td>{{ $user['created_at'] }}</td>
                         <td>{{ $user['updated_at'] }}</td>
-                        <td><a href="{{ url('dashboard/user/edit/'.$user->id) }}" class="btn btn-secondary btn-sm">Edit</a></td>
+                        <td><a href="{{ url('dashboard/user/edit/'.$user->id) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
                         <td><form action="{{ url('dashboard/user/delete/'.$user->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')">Delete</button>
+                            <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')"><b class="fas fa-trash"></b> Delete</button>
                         </form></td>
                     </tr>
                 @endforeach
