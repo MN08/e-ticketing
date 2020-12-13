@@ -23,7 +23,13 @@ Auth::routes();
 Route::middleware('auth')->group(function(){
 
     //dashboard
-Route::get('/dashboard', 'Dashboard\DashboardController@index');
+Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard');
+
+Route::get('/dashboard/movies', 'Dashboard\DashboardController@index')->name('dashboard.movies');
+
+Route::get('/dashboard/theaters', 'Dashboard\DashboardController@index')->name('dashboard.theaters');
+
+Route::get('/dashboard/tickets', 'Dashboard\DashboardController@index')->name('dashboard.tickets');
 
     //dashboard->users
 Route::get('/dashboard/users', 'Dashboard\UserController@index')->name('dashboard.users');
