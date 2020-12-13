@@ -8,7 +8,7 @@
                 <h3>Users</h3>
             </div>
             <div class="col-md-3">
-                <form action="{{ url('dashboard/users/') }}" method="GET">
+                <form action="{{ route('dashboard.users') }}" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" name="search" value="{{ $request['search'] ?? ''}}">
                         <div class="input-group-append">
@@ -41,8 +41,8 @@
                         <td>{{ $user['email'] }}</td>
                         <td>{{ $user['created_at'] }}</td>
                         <td>{{ $user['updated_at'] }}</td>
-                        <td><a href="{{ url('dashboard/user/edit/'.$user->id) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
-                        <td><form action="{{ url('dashboard/user/delete/'.$user->id) }}" method="POST">
+                        <td><a href="{{ route('dashboard.users.edit', ['id' => $user->id]) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
+                        <td><form action="{{ route('dashboard.users.delete',['id'=>$user->id]) }}">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')"><b class="fas fa-trash"></b> Delete</button>
