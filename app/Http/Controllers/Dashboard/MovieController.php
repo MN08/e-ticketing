@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Movies;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
@@ -13,9 +13,23 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Movie $movies)
     {
-        //
+        $search = $request->input('search');
+
+        $active = "Movies";
+
+        $movies = $movies->when   ($search, function($query) use ($search){
+            return $query->where('title','like','%'.$search.'%')
+                            ->orWhere('email','like','%'.$search.'%');
+        })
+            ->paginate(10);
+
+        $request = $request->all();
+
+        return view('dashboard/movie/list',['movies'=> $movies,
+                                            'active' => $active,
+                                            'request' => $request]);
     }
 
     /**
