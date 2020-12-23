@@ -15,19 +15,19 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form action="{{ route('dashboard.movies.update', ['id' => $movie->id]) }}" method="POST">
+                <form action="{{ route('dashboard.movies.store') }}" method="POST">
                     @csrf
-                    @method('put')
+                    @method('post')
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" class="form-control" name="name" value="{{ $movie->name }}">
+                        <input type="text" class="form-control" name="name" value="">
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') ?? $movie->email }}">
+                        <input type="email" class="form-control" name="email" value="">
                         @error('email')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

@@ -42,7 +42,7 @@ class MovieController extends Controller
 
         $active = "Movies";
 
-        return view('dashboard/movie/form',['request' => $request]);
+        return view('dashboard/movie/form',['active' => $active]);
     }
 
     /**
