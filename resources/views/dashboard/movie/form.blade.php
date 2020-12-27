@@ -15,26 +15,35 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form action="{{ route('dashboard.movies.store') }}" method="POST">
+                <form action="{{ route('dashboard.movies.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('post')
                     <div class="form-group">
-                        <label for="name">Nama</label>
-                        <input type="text" class="form-control" name="name" value="">
-                        @error('name')
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" name="title" value="">
+                        @error('title')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" value="">
-                        @error('email')
+                        <label for="description">Desctiption</label>
+                        <textarea class="form-control" name="description" id=""  rows="3"></textarea>
+                        @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group mt-4">
+                        <div class="custom-file">
+                            <label for="thumbnail" class="custom-file-label">Thumbnail</label>
+                            <input class="custom-file-input" type="file" name="thumbnail" id="">
+                            @error('thumbnail')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="form-group mb-1">
-                        <button class="btn btn-success" type="submit"><b class="fas fa-save"></b> Simpan</button>
                         <button type="button" class="btn btn-warning float-right" onclick="window.history.back()">Cancel</button>
+                        <button class="btn btn-success" type="submit"><b class="fas fa-save"></b> Simpan </button>
                     </div>
                 </form>
             </div>

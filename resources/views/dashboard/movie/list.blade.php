@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mb-2">
-    <a href="{{ route('dashboard.movies.create') }}" class="btn btn-primary"><b class="fas fa-plus"></b>Movies</a>
+    <a href="{{ route('dashboard.movies.create') }}" class="btn btn-primary btn-sm"><b class="fas fa-plus"></b> Movies</a>
 </div>
 
 <div class="card">
@@ -12,7 +12,7 @@
                 <h3>Movies</h3>
             </div>
             <div class="col-md-3">
-                <form action="{{ route('dashboard.users') }}" method="get">
+                <form action="{{ route('dashboard.movies') }}" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" name="search" value="{{ $request['search'] ?? ''}}">
                         <div class="input-group-append">
@@ -29,9 +29,11 @@
         <table class="table table-borderless table-striped table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Title</th>
+                    {{-- <th>#</th> --}}
                     <th>Thumbnail</th>
+                    <th>Title</th>
+                    <th>Created</th>
+                    <th>Edited</th>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -40,9 +42,12 @@
             <tbody>
                 @foreach ($movies as $movie)
                     <tr>
-                        <th scope="row">{{ ($movies->currentPage()-1)*($movie->perPage()) + $loop->iteration }}</th>
+                        {{-- <th scope="row">{{ ($movies->currentPage()-1)*($movies->perPage()) + $loop->iteration }}</th> --}}
+                        <td class="col-thumbnail">
+                            <img src="{{ asset('storage/movies/'.$movie['thumbnail']) }}" alt="" class="img-fluid"></td>
                         <td>{{ $movie['title'] }}</td>
-                        <td>{{ $movie['thumbnail'] }}</td>
+                        <td>{{ $movie['created_at'] }}</td>
+                        <td>{{ $movie['updated_at'] }}</td>
                         <td><a href="{{ route('dashboard.movies.edit', ['id' => $movie->id]) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
                         <td><form action="{{ route('dashboard.movies.delete',['id'=>$movie->id]) }}">
                             @csrf
