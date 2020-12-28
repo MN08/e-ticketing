@@ -30,12 +30,12 @@
             <thead>
                 <tr>
                     {{-- <th>#</th> --}}
-                    <th>Thumbnail</th>
-                    <th>Title</th>
-                    <th>Created</th>
-                    <th>Edited</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
+                        <th class="text-center">Thumbnail</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Created</th>
+                        <th class="text-center">Edited</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                 </tr>
             </thead>
 
@@ -48,7 +48,7 @@
                         <td>{{ $movie['title'] }}</td>
                         <td>{{ $movie['created_at'] }}</td>
                         <td>{{ $movie['updated_at'] }}</td>
-                        <td><a href="{{ route('dashboard.movies.edit', ['id' => $movie->id]) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
+                        <td><a href="{{ route('dashboard.movies.edit',$movie->id) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
                         <td><form action="{{ route('dashboard.movies.delete',['id'=>$movie->id]) }}">
                             @csrf
                             @method('delete')

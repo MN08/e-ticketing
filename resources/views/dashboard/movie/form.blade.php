@@ -15,19 +15,20 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form action="{{ route('dashboard.movies.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($url, $movie->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('post')
+                    @method('put')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" value="">
+                        <input type="text" class="form-control" name="title" value="{{ old('title') ??
+                        $movie->title ?? ''}}">
                         @error('title')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="description">Desctiption</label>
-                        <textarea class="form-control" name="description" id=""  rows="3"></textarea>
+                        <textarea class="form-control" name="description" id=""  rows="3">{{ old('description') ??$movie->description ?? ''}}</textarea>
                         @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
