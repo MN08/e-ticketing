@@ -36,7 +36,7 @@ Route::get('/dashboard/movies/create', 'Dashboard\MovieController@create')->name
 Route::post('/dashboard/movies', 'Dashboard\MovieController@store')->name('dashboard.movies.store');
 Route::get('/dashboard/movies/{movie}', 'Dashboard\MovieController@edit')->name('dashboard.movies.edit');
 Route::put('/dashboard/movies/{movie}', 'Dashboard\MovieController@update')->name('dashboard.movies.update');
-Route::delete('/dashboard/movies/{id}', 'Dashboard\MovieController@destroy')->name('dashboard.movies.delete');
+Route::delete('/dashboard/movies/{movie}', 'Dashboard\MovieController@destroy')->name('dashboard.movies.delete');
 
 //dashboard->users
 Route::get('/dashboard/users', 'Dashboard\UserController@index')->name('dashboard.users');
