@@ -20,7 +20,7 @@
                     @method('put')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" value="{{ old('title') ??
+                        <input type="text" class="form-control @error('title') {{ 'is-invalid' }} @enderror" name="title" value="{{ old('title') ??
                         $movie->title ?? ''}}">
                         @error('title')
                             <span class="text-danger">{{ $message }}</span>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Desctiption</label>
-                        <textarea class="form-control" name="description" id=""  rows="3">{{ old('description') ??$movie->description ?? ''}}</textarea>
+                        <textarea class="form-control @error('description') {{ 'is-invalid' }} @enderror" name="description" id=""  rows="3">{{ old('description') ??$movie->description ?? ''}}</textarea>
                         @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
