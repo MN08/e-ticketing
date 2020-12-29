@@ -41,12 +41,16 @@
                         <td>{{ $user['email'] }}</td>
                         <td>{{ $user['created_at'] }}</td>
                         <td>{{ $user['updated_at'] }}</td>
-                        <td><a href="{{ route('dashboard.users.edit', ['id' => $user->id]) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
-                        <td><form action="{{ route('dashboard.users.delete',['id'=>$user->id]) }}">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')"><b class="fas fa-trash"></b> Delete</button>
-                        </form></td>
+                        <td>
+                            <a href="{{ route('dashboard.users.edit', ['id' => $user->id]) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('dashboard.users.delete',['id'=>$user->id]) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')"><b class="fas fa-trash"></b> Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
