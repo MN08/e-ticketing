@@ -51,8 +51,9 @@
                                 <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')"><b class="fas fa-trash"></b> Delete</button>
                             </form>
                         </td>
-                    </td>
-
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 
