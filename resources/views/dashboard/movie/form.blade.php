@@ -15,9 +15,11 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form action="{{ route($url, $movie->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($url, $movie->id ?? '') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
+                    @if (isset($movie))
+                        @method('put')
+                    @endif
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control @error('title') {{ 'is-invalid' }} @enderror" name="title" value="{{ old('title') ??
@@ -44,7 +46,7 @@
                     </div>
                     <div class="form-group mb-1">
                         <button type="button" class="btn btn-warning float-right" onclick="window.history.back()">Cancel</button>
-                        <button class="btn btn-success" type="submit"><b class="fas fa-save"></b> Simpan </button>
+                        <button class="btn btn-success" type="submit"><b class="fas fa-save"></b> {{ $button }} </button>
                     </div>
                 </form>
             </div>
