@@ -48,12 +48,16 @@
                         <td>{{ $movie['title'] }}</td>
                         <td>{{ $movie['created_at'] }}</td>
                         <td>{{ $movie['updated_at'] }}</td>
-                        <td><a href="{{ route('dashboard.movies.edit',$movie->id) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a></td>
-                        <td><form action="{{ route('dashboard.movies.delete',['id'=>$movie->id]) }}">
+                        <td>
+                            <a href="{{ route('dashboard.movies.edit',$movie->id) }}" class="btn btn-secondary btn-sm"><b class="fas fa-edit"></b> Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('dashboard.movies.delete',$movie->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')"><b class="fas fa-trash"></b> Delete</button>
-                        </form></td>
+                                <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('are you sure?')"><b class="fas fa-trash"></b> Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
