@@ -44,7 +44,10 @@ class MovieController extends Controller
 
         $active = "Movies";
 
-        return view('dashboard/movie/form',['active' => $active]);
+        return view('dashboard/movie/form',['active' => $active,
+                                            'button' => 'Save',
+                                            'url'   => 'dashboard.movies.store'
+                                            ]);
     }
 
     /**
@@ -107,6 +110,7 @@ class MovieController extends Controller
 
         return view('dashboard/movie/form',['active' => $active,
                                             'movie' => $movie,
+                                            'button' => 'Update',
                                             'url'   => 'dashboard.movies.update'
         ]);
     }
